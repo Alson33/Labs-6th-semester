@@ -1,4 +1,4 @@
-package lab2;
+package OOSD.lab2;
 
 import java.util.HashMap;
 import java.util.Map;

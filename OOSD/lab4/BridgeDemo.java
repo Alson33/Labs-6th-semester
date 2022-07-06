@@ -1,4 +1,4 @@
-package lab4;
+package OOSD.lab4;
 
 interface DrawApi {
     public void drawCircle(int radius);

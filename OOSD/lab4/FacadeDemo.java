@@ -1,4 +1,4 @@
-package lab4;
+package OOSD.lab4;
 
 interface Shape {
     public void draw();

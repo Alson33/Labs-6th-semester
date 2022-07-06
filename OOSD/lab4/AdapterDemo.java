@@ -1,4 +1,4 @@
-package lab4;
+package OOSD.lab4;
 
 interface Media {
     public void play(String type, String filename);
