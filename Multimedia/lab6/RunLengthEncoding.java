@@ -1,5 +1,7 @@
 package Multimedia.lab6;
 
+import java.util.Scanner;
+
 public class RunLengthEncoding {
 
   public static void encoding(String str)
@@ -18,8 +20,10 @@ public class RunLengthEncoding {
 
   public static void main(String[] args)
   {
-
-    String str = "wwwwaaadexxxxxxywww";
-    encoding(str);
+    try (Scanner sc = new Scanner(System.in)) {
+      System.out.println("Enter a string: ");
+      String str = sc.nextLine();
+      encoding(str);
+    }
   }
 }

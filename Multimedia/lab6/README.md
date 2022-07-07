@@ -10,7 +10,8 @@
 - For example say we have a string `wwweerrtss` then the encoded output will be `w3e2r2t1s2` as we can see the encoded output has numbers assigned as the length of corresponding characters.
 
 - Steps to create a Run length encoding:
-    1. First we loop through the characters of the given string.
+    1. Get string from user
+    1. Then we loop through the characters of the given string.
     2. Then loop through each characters and count the length
     3. Print the character and length repeatedly.
 
@@ -35,8 +36,11 @@ public class RunLengthEncoding {
 
   public static void main(String[] args)
   {
-
-    String str = "wwwwaaadexxxxxxywww";
+    try (Scanner sc = new Scanner(System.in)) {
+      System.out.println("Enter a String: ");
+      String str = sc.nextLine();
+      encoding(str);
+    }
     encoding(str);
   }
 }
@@ -49,5 +53,7 @@ public class RunLengthEncoding {
 ### Output
 
 ```bash
-w4a3d1e1x6y1w3
+Enter a string: 
+aaabbcccccddww
+a3b2c5d2w2
 ```
