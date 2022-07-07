@@ -1,93 +1,91 @@
-## Lab - 3 [Graphics in Java]
+## Lab 3 - [Resize Image in Java]
 
 ### Objective
 
-- To create simple shapes such as rectangle, oval and line in java
-- To create a zebra crossing graphics in java
+- To resize image in Java
 
 ### Theory / Procedure
 
 - `AWT` and `Swing` are the GUI packages made by the java team inorder to create graphical interface uisng Java.
 - `AWT` uses the OS underlying graphical interface to create the graphical shapes while `Swing` is totally independent as it is made totally in Java.
 
-- The steps requried to create simple shapes are:
-    1. Create a class that extends `Canvas`(a abstract class imported from awt to paint graphics)
-    2. Override the `paint` method of Canvas class which takes a `Graphics` class object as parameter.
-    3. Use the Graphics class object and use its different methods like `drawLine`, `drawOval`, etc to create graphics
-    4. Finally create a `Frame` or `JFrame (Swing)` and add our class object as an component to the frame.
-- The steps required to creating a Zebra crossing are as same as simple shapes instead of randomly drawing graphics we use the `drawRect` to draw a bordered rectangle and `fillRect` to draw a filled rectangle alternetively to create a zebra crossing.
+- The steps required to resize image are
+    1. Use `File` class to get image from the path given
+    2. Use the `ImageIO` class to read the image as `BufferedImage`
+    3. Use the `BufferedImage` constructor to resize the image
+    4. User the `ImageIO` class `write` method to produce a new image
 
 ### Source Code
 
 ```java
-/* Simple shapes */
-import javax.swing.JFrame;
-import java.awt.*;
+/*Resize image in Java*/
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class GraphicsDemo extends Canvas {
-    
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+import javax.imageio.ImageIO;
 
-        g.drawRect(100, 100, 200, 100);
-        g.drawLine(20, 20, 100, 20);
-        g.drawOval(50, 50, 40, 60);
+public class ResizeImage {
+    public static void resize(String inputImagePath,
+            String outputImagePath, int scaledWidth, int scaledHeight)
+            throws IOException {
+        File inputFile = new File(inputImagePath);
+        BufferedImage inputImage = ImageIO.read(inputFile);
+ 
+        BufferedImage outputImage = new BufferedImage(scaledWidth,
+                scaledHeight, inputImage.getType());
+ 
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+ 
+        String formatName = outputImagePath.substring(outputImagePath
+                .lastIndexOf(".") + 1);
+ 
+        ImageIO.write(outputImage, formatName, new File(outputImagePath));
+    }
+    public static void resize(String inputImagePath,
+            String outputImagePath, double percent) throws IOException {
+        File inputFile = new File(inputImagePath);
+        BufferedImage inputImage = ImageIO.read(inputFile);
+        int scaledWidth = (int) (inputImage.getWidth() * percent);
+        int scaledHeight = (int) (inputImage.getHeight() * percent);
+        resize(inputImagePath, outputImagePath, scaledWidth, scaledHeight);
     }
 
     public static void main(String[] args) {
-        GraphicsDemo gd = new GraphicsDemo();    
-    
-        JFrame frame = new JFrame();
-
-        frame.setSize(500, 500);
-        frame.add(gd);
-        frame.setVisible(true);
-    }
-}
-```
-
-```java
-/*Zebra Crossing in Java*/
-import java.awt.*;
-import javax.swing.JFrame;
-
-public class Zebracrossing extends Canvas {
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-
-        for (int i = 0; i < 8; i++) {
-            if(i%2==0){
-                g.fillRect(i*50, 20, 50, 300);
-            }else{
-                g.drawRect(i*50, 20, 50, 300);
-            }
+        String inputImagePath = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat.jpg";
+        String outputImagePath1 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_fixed.jpg";
+        String outputImagePath2 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_smaller.jpg";
+        String outputImagePath3 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_bigger.jpg";
+ 
+        try {
+            int scaledWidth = 1024;
+            int scaledHeight = 768;
+            ResizeImage.resize(inputImagePath, outputImagePath1, scaledWidth, scaledHeight);
+ 
+            double percent = 0.5;
+            ResizeImage.resize(inputImagePath, outputImagePath2, percent);
+ 
+            percent = 1.5;
+            ResizeImage.resize(inputImagePath, outputImagePath3, percent);
+ 
+        } catch (IOException ex) {
+            System.out.println("Error resizing the image.");
+            ex.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        Zebracrossing zc = new Zebracrossing();
-
-        JFrame frame = new JFrame();
-
-        frame.setSize(500, 600);
-        frame.add(zc);
-        frame.setVisible(true);
-    }
+ 
 }
 ```
 
 ### Conclusion
 
-- Created simple shapes like oval, rectangle, line and a zebra crossing like graphics using `AWT - Canvas` and `Swing - JFrame`
+- Loaded image and resized it
 
 ### Output
 
-- Simple shapes output
+- Image Resize output
 
-![simple shapes output](./output/simple-graphics.png)
-
-- Zebra crossing output
-
-![Zebra crossing output](./output/zebra-crossing.png)
+![Image resize output](./output/image-resize.png)

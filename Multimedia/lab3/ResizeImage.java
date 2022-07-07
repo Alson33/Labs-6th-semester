@@ -1,4 +1,4 @@
-package Multimedia.lab2;
+package Multimedia.lab3;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -63,10 +63,10 @@ public class ResizeImage {
      * Test resizing images
      */
     public static void main(String[] args) {
-        String inputImagePath = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat.jpg";
-        String outputImagePath1 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_fixed.jpg";
-        String outputImagePath2 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_smaller.jpg";
-        String outputImagePath3 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab2/assets/cat_bigger.jpg";
+        String inputImagePath = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab3/assets/cat.jpg";
+        String outputImagePath1 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab3/assets/resized/cat_fixed.jpg";
+        String outputImagePath2 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab3/assets/resized/cat_smaller.jpg";
+        String outputImagePath3 = "D:/projects/college-related-projects/Labs-6th-semester/Multimedia/lab3/assets/resized/cat_bigger.jpg";
  
         try {
             // resize to a fixed width (not proportional)

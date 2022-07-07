@@ -1,4 +1,4 @@
-package Multimedia.lab3;
+package Multimedia.lab4;
 
 import javax.swing.JFrame;
 import java.awt.*;
