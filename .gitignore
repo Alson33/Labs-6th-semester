@@ -1,2 +1,5 @@
 # Java classes
 *.class
+
+# Ignore generated outputs
+MultiMedia/*/assets/resized/*.jpg
