@@ -1,6 +1,6 @@
-# OOSD
+# CN
 
-Contains Lab work done for OOSD in 6th semester of Software engineering in GCES
+Contains Lab work done for CN in 6th semester of Software engineering in GCES
 
 ## Table of contents
 
