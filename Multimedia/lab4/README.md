@@ -1,4 +1,4 @@
-## Lab - 3 [Graphics in Java]
+## Lab - 4 [Graphics in Java]
 
 ### Objective
 
